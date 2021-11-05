@@ -13,7 +13,7 @@ import cv2
 
 loaded_images = list()
 
-path='AtelierCBIR1/DataSet/obj_decoys'
+path='../AtelierCBIR1/DataSet/obj_decoys'
 for filename in listdir(path):
     img_data = image.imread(path+'/' + filename)
     loaded_images.append(img_data)
@@ -30,7 +30,7 @@ for i in range(6):
   ax1.imshow(loaded_images[id[i]])
   ax1.set_title('image id: %s '% (id[i]))
 
-img_requete = image.imread('/AtelierCBIR1/ImageRequete.jpg')
+img_requete = image.imread('../AtelierCBIR1/ImageRequete.jpg')
 
 distances = {}
 
@@ -65,5 +65,3 @@ for i in range(5):
   ax1 = fig.add_subplot(2, 3, i+2)
   ax1.imshow(loaded_images[distances[i][0]])
   ax1.set_title('Similaire N° %s' %(i+1))
-
-

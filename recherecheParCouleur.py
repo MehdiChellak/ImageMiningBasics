@@ -9,16 +9,11 @@ Created on Sat Oct 30 13:59:11 2021
 # On va créer une fonction pour l'indexation d'une image 
 # C'est l'équivalent d'extraire une vecteur descripteur en se basant sur les moments statistiques des couleurs
 import numpy as np
-# la fonction color_Moment retourne un vecteur descripteur de 6 valeurs
-# contenant la moyenne et la déviation standard de chaque canal RGB
-# utiliser np.mean et np.std
-# il faut normaliser les moments en les divisant sur la moyenne
-
 
 from matplotlib import image
 import numpy as np
 import math
-from matplotlib import image
+
 
 import cv2
 from os import listdir
@@ -41,8 +36,7 @@ def color_Moments(img):
         colorFeatures[1][i] = np.std(rgb.flatten())
         i+=1
     return colorFeatures
-# l'indexation consiste à créer une matrice d'index utilisant les moments de couleurs pour chacune des images de la base
-# La méthode CBIR_Indexation retourne la matrice de caractéristiques
+
 def CBIR_Indexation():
     path='../AtelierCBIR1/DataSet/obj_decoys'
     for filename in listdir(path):
@@ -57,9 +51,6 @@ def CBIR_Indexation():
     
     return features
 
-# la recherche consiste à calculer la distance euclidienne entre le vecteur descripteur de l'image requéte et la matrice de caractéristiques
-# La méthode CBIR_Recherche admet en argument l'image requéte et la matrice de caractéristiques
-# Elle retourne un disctionnaire trié contenant les distances et les indices des images
 def CBIR_Recherche(Imreq,ind_Matrix):
     distances = dict()
     vecteurReq = color_Moments(Imreq)    
@@ -73,7 +64,7 @@ index_Matrix=CBIR_Indexation()
 
 img_requete = image.imread('../AtelierCBIR1/ImageRequete.jpg') 
 distanes_CBIR=CBIR_Recherche(img_requete,index_Matrix)
-print(distanes_CBIR)
+
 
 import matplotlib.pyplot as plt
 
