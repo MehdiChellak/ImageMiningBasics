@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 """
+Created on Sat Nov  6 18:26:56 2021
+
+@author: ASUS
+"""
+
+# -*- coding: utf-8 -*-
+"""
 Created on Thu Nov  4 09:36:16 2021
 
 @author: ASUS
@@ -18,26 +25,7 @@ import scipy.spatial.distance as dist
 
 loaded_images = list()
 
-"""
 
-You can usually get better information from a HSV colorspace.
- Let me try and give a personal experience example again:
-     Try imagining you have an image of a single-color plane with a 
-     shadow on it. In RGB colorspace, the shadow part will most likely 
-     have very different characteristics than the part without shadows. 
-     In HSV colorspace, the hue component of both patches is more likely
-     tbeo  similar: the shadow will primarily influence the value, or maybe
-     satuation component, while the hue, indicating the primary "color" 
-     (without it's brightness and diluted-ness by white/black) should not
-      change so much
-
-"""
-"""
-    RGB has to do with "implementation details" regarding the way RGB displays color, 
-    and HSV has to do with the "actual color" components.
-    Another way to say this would be RGB is the way computers treats color,
-    and HSV try to capture the components of the way we humans perceive color.
-"""
 
 def hsvHistogramFeatures(image):
     """ img: image à quantifier dans un espace couleur hsv en 8x2x2 cases identiques
@@ -90,7 +78,6 @@ def hsvHistogramFeatures(image):
     hsvColorHisto /= np.sum(hsvColorHisto)
     return hsvColorHisto.reshape(-1)
 
-
 def color_Moments(img):
     R = img[..., 0]
     G = img[..., 1]
@@ -130,7 +117,7 @@ def CBIR_Recherche(Imreq, features):
     return distances
 
 features = CBIR_Indexation(39)
-img_requete = image.imread('../AtelierCBIR1/chateau2.jpg') 
+img_requete = image.imread('../AtelierCBIR1/beta.jpg') 
 
 distanes_CBIR=CBIR_Recherche(img_requete,features)
 
